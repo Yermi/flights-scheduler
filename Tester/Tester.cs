@@ -1,4 +1,5 @@
 ﻿using BE;
+using DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,6 +50,15 @@ namespace Tester
             var airports = dataReceiver.GetData<Airport>(airportsRequest);
             var countries = dataReceiver.GetData<Country>(countriesRequest);
             var cities = dataReceiver.GetData<City>(citiesRequest);
+        }
+
+        public void testEntityFramwork()
+        {
+            var flightWrapper = new FlightWrapper(AirportPages.BenGurion);
+            var date = DateTime.Now;
+            var flights = flightWrapper.GetFlightsByDate(date);
+            var flightsHandler = new FlightsDbHandler();
+            flightsHandler.SaveFlights(flights);
         }
     }
 }

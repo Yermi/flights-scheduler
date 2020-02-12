@@ -12,7 +12,8 @@ namespace Tester
         {
             var tester = new Tester();
             //tester.testFlightsWrapper();
-            tester.testGetData();
+            //tester.testGetData();
+            tester.testEntityFramwork();
 
         }
     }
