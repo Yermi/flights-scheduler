@@ -13,8 +13,10 @@ namespace Tester
             var tester = new Tester();
             //tester.testFlightsWrapper();
             //tester.testGetData();
-            tester.testEntityFramwork();
-
+            //tester.testEntityFramwork();
+            //tester.testQueryData();
+            //tester.testRemoveAll();
+            tester.collectData();
         }
     }
 }

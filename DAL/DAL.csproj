@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FlightsHandler.cs" />
-    <Compile Include="FlightsSchedulerContext.cs" />
+    <Compile Include="FlightsContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

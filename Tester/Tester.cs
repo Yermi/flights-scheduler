@@ -16,7 +16,7 @@ namespace Tester
         {
             var flightWrapper = new FlightWrapper(AirportPages.BenGurion);
             var flights = new List<Flight>();
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 2; i++)
             {
                 var date = DateTime.Now.AddDays(i);
                 var flight = flightWrapper.GetFlightsByDate(date);
@@ -24,17 +24,17 @@ namespace Tester
                 flights = flights.Count == 0 ? flight : flights.Concat(flight).ToList();
             }
             Console.WriteLine(flights.Count);
-            var cookie = new Cookie("incap_ses_264_1276841", "zqTLGFJTOmAn/CN5P+2pA8RTRF4AAAAA55D7hroVG4lj6zw6nY4UMQ==");
-            var dataReceiver = new DataReceiver(cookie);
-            var airportsRequest = new AirportRequest("", "", "LLBG");
-            var airlinesRrequest = new AirlineRequest("", "LLBG");
-            var countriesRequest = new CountryRequest("", "LLBG");
-            var citiesRequest = new CityRequest("", "", "LLBG");
+            //var cookie = new Cookie("incap_ses_264_1276841", "zqTLGFJTOmAn/CN5P+2pA8RTRF4AAAAA55D7hroVG4lj6zw6nY4UMQ==");
+            //var dataReceiver = new DataReceiver(cookie);
+            //var airportsRequest = new AirportRequest("", "", "LLBG");
+            //var airlinesRrequest = new AirlineRequest("", "LLBG");
+            //var countriesRequest = new CountryRequest("", "LLBG");
+            //var citiesRequest = new CityRequest("", "", "LLBG");
 
-            var airlines = dataReceiver.GetData<Airline>(airlinesRrequest);
-            var airports = dataReceiver.GetData<Airport>(airportsRequest);
-            var countries = dataReceiver.GetData<Country>(countriesRequest);
-            var cities = dataReceiver.GetData<City>(citiesRequest);
+            //var airlines = dataReceiver.GetData<Airline>(airlinesRrequest);
+            //var airports = dataReceiver.GetData<Airport>(airportsRequest);
+            //var countries = dataReceiver.GetData<Country>(countriesRequest);
+            //var cities = dataReceiver.GetData<City>(citiesRequest);
         }
 
         public void testGetData()
@@ -55,10 +55,55 @@ namespace Tester
         public void testEntityFramwork()
         {
             var flightWrapper = new FlightWrapper(AirportPages.BenGurion);
-            var date = DateTime.Now;
-            var flights = flightWrapper.GetFlightsByDate(date);
+            var flights = new List<Flight>();
+            for (int i = 0; i < 30; i++)
+            {
+                var date = DateTime.Now.AddDays(i);
+                var flight = flightWrapper.GetFlightsByDate(date);
+                Console.WriteLine("{0}: {1} flights", date, flight.Count);
+                flights = flights.Count == 0 ? flight : flights.Concat(flight).ToList();
+            }
+            Console.WriteLine(flights.Count);
+            //var date = DateTime.Now;
+            //var flights = flightWrapper.GetFlightsByDate(date);
             var flightsHandler = new FlightsDbHandler();
             flightsHandler.SaveFlights(flights);
+            var f = flightsHandler.GetAll();
+        }
+
+        public void testQueryData()
+        {
+            var flightsHandler = new FlightsDbHandler();
+            var maxDate = flightsHandler.GetMaxDate();
+            var f = flightsHandler.GetAll();
+        }
+
+        public void testRemoveAll()
+        {
+            var flightsHandler = new FlightsDbHandler();
+            flightsHandler.RemoveAll();
+        }
+
+        public void collectData()
+        {
+            try
+            {
+                var flightsWrapper = new FlightWrapper(AirportPages.BenGurion);
+                var flightsHandler = new FlightsDbHandler();
+                var date = DateTime.Parse("30/09/2020 00:00:00");
+                while (date < DateTime.Parse("01/11/2020 00:00:00"))
+                {
+                    var flights = flightsWrapper.GetFlightsByDate(date);
+                    flightsHandler.SaveFlights(flights);
+                    date = date.AddDays(1);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+
         }
     }
 }
