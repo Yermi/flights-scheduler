@@ -9,6 +9,7 @@ using System.Threading;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Wrapper
 {
@@ -104,7 +105,9 @@ namespace Wrapper
             var response = _browser.EvaluateScriptAsync(Scripts.CollectFlightsData).Result;
             var jsResult = (List<object>)response.Result;
             var asJson = JsonConvert.SerializeObject(jsResult);
-            var asFlights = JsonConvert.DeserializeObject <List<Flight>>(asJson);
+            var format = "dd/MM/yyyy HH:mm:ss";
+            var dateTimeConverter = new IsoDateTimeConverter { DateTimeFormat = format };
+            var asFlights = JsonConvert.DeserializeObject <List<Flight>>(asJson, dateTimeConverter);
             return asFlights;
         }
     }

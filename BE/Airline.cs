@@ -9,5 +9,7 @@
         public string AirLineName { get; set; }
         public bool IsEnabled { get; set; }
         public string NameByLanguage { get; set; }
+        public string IATA { get; set; }
+        public string ICAO { get; set; }
     }
 }

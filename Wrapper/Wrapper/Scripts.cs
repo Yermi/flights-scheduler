@@ -58,17 +58,32 @@
 
         public static readonly string CollectFlightsData = @"(() => {
                 var list = [];
+
+                function FindYear(date) {
+                    let month = parseInt(date.split(' ')[0].split('/')[1])
+                    let currentMonth = new Date().getMonth() + 1;
+                    let year = month >= currentMonth ? new Date().getFullYear() : new Date().getFullYear() + 1;
+                    return date.split(' ')[0] + '/' + year + ' ' + date.split(' ')[1] + ':00';
+                }
+
                 var table = document.getElementById('board3');
                 for (var i = 1, row; row = table.rows[i]; i++)
                 {
                     let airline = row.getElementsByTagName('a')[0] ? row.getElementsByTagName('a')[0].href : null;
                     let img = airline ? row.getElementsByTagName('a')[0].getElementsByTagName('img')[0].src : null;
                     let filghtId = row.cells[1].innerText;
+                    let iata = filghtId.split(' ')[0];
+                    let number = filghtId.split(' ')[1];
                     let destination = row.cells[2].innerText;
                     let date = row.cells[3].innerText;
+                    let fullDate = FindYear(date);
                     let dayOfWeek = row.cells[4].innerText;
                     let terminal = row.cells[5].innerText;
-                    let obj = { Carrier: airline, ImagePath: img, FlightID: filghtId, Source: 'Tel Aviv', Destination: destination, DepartureTime: date, DayOfWeek: dayOfWeek, Terminal: terminal};
+                    let obj = { 
+                                IataAirline: iata, FlightNumber: number, ImagePath: img, 
+                                Source: 'TEL AVIV', Destination: destination, 
+                                DepartureTime: fullDate, DayOfWeek: dayOfWeek, Terminal: terminal
+                              };
                     list.push(obj);
                 }
                 return list;
