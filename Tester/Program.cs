@@ -16,7 +16,7 @@ namespace Tester
             //tester.testEntityFramwork();
             //tester.testQueryData();
             //tester.testRemoveAll();
-            tester.collectData();
+            tester.saveCities();
         }
     }
 }

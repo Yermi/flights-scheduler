@@ -7,7 +7,15 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class FlightsDbHandler
+    public interface IFlightsService
+    {
+        void SaveFlights(IEnumerable<Flight> p_flights);
+        IEnumerable<Flight> GetAll();
+        void RemoveAll();
+        DateTime GetMaxDate();
+    }
+
+    public class FlightsService : IFlightsService
     {
         public void SaveFlights(IEnumerable<Flight> p_flights)
         {
@@ -22,7 +30,6 @@ namespace DAL
         {
             using (var db = new FlightsContext())
             {
-                var con = db.Database.Connection.ConnectionString;
                 return (from f in db.Flights
                         select f).ToList();
             }

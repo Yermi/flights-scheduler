@@ -1,4 +1,6 @@
-﻿namespace BE
+﻿using System.Collections.Generic;
+
+namespace BE
 {
     public class Country
     {

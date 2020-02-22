@@ -70,7 +70,6 @@
                 for (var i = 1, row; row = table.rows[i]; i++)
                 {
                     let airline = row.getElementsByTagName('a')[0] ? row.getElementsByTagName('a')[0].href : null;
-                    let img = airline ? row.getElementsByTagName('a')[0].getElementsByTagName('img')[0].src : null;
                     let filghtId = row.cells[1].innerText;
                     let iata = filghtId.split(' ')[0];
                     let number = filghtId.split(' ')[1];
@@ -80,7 +79,7 @@
                     let dayOfWeek = row.cells[4].innerText;
                     let terminal = row.cells[5].innerText;
                     let obj = { 
-                                IataAirline: iata, FlightNumber: number, ImagePath: img, 
+                                IataAirline: iata, FlightNumber: number, FlightID: iata + number, 
                                 Source: 'TEL AVIV', Destination: destination, 
                                 DepartureTime: fullDate, DayOfWeek: dayOfWeek, Terminal: terminal
                               };

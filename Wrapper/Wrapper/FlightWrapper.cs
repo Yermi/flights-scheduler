@@ -105,8 +105,7 @@ namespace Wrapper
             var response = _browser.EvaluateScriptAsync(Scripts.CollectFlightsData).Result;
             var jsResult = (List<object>)response.Result;
             var asJson = JsonConvert.SerializeObject(jsResult);
-            var format = "dd/MM/yyyy HH:mm:ss";
-            var dateTimeConverter = new IsoDateTimeConverter { DateTimeFormat = format };
+            var dateTimeConverter = new IsoDateTimeConverter { DateTimeFormat = "dd/MM/yyyy HH:mm:ss" };
             var asFlights = JsonConvert.DeserializeObject <List<Flight>>(asJson, dateTimeConverter);
             return asFlights;
         }

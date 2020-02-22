@@ -20,7 +20,7 @@ namespace Tester
             {
                 var date = DateTime.Now.AddDays(i);
                 var flight = flightWrapper.GetFlightsByDate(date);
-                Console.WriteLine("{0}: {1} flights",date, flight.Count);
+                Console.WriteLine("{0}: {1} flights", date, flight.Count);
                 flights = flights.Count == 0 ? flight : flights.Concat(flight).ToList();
             }
             Console.WriteLine(flights.Count);
@@ -66,21 +66,21 @@ namespace Tester
             Console.WriteLine(flights.Count);
             //var date = DateTime.Now;
             //var flights = flightWrapper.GetFlightsByDate(date);
-            var flightsHandler = new FlightsDbHandler();
+            var flightsHandler = new FlightsService();
             flightsHandler.SaveFlights(flights);
             var f = flightsHandler.GetAll();
         }
 
         public void testQueryData()
         {
-            var flightsHandler = new FlightsDbHandler();
+            var flightsHandler = new FlightsService();
             var maxDate = flightsHandler.GetMaxDate();
             var f = flightsHandler.GetAll();
         }
 
         public void testRemoveAll()
         {
-            var flightsHandler = new FlightsDbHandler();
+            var flightsHandler = new FlightsService();
             flightsHandler.RemoveAll();
         }
 
@@ -89,7 +89,7 @@ namespace Tester
             try
             {
                 var flightsWrapper = new FlightWrapper(AirportPages.BenGurion);
-                var flightsHandler = new FlightsDbHandler();
+                var flightsHandler = new FlightsService();
                 var date = DateTime.Parse("30/09/2020 00:00:00");
                 while (date < DateTime.Parse("01/11/2020 00:00:00"))
                 {
@@ -104,6 +104,36 @@ namespace Tester
                 throw;
             }
 
+        }
+
+        public void saveCities()
+        {
+            try
+            {
+                var dateReceiver = new DataReceiver(new Cookie());
+                //var citiesRequest = new CityRequest("", "", "LLBG");
+                //var cities = dateReceiver.GetData<City>(citiesRequest);
+                //var countriesRequest = new CountryRequest("", "LLBG");
+                //var countries = dateReceiver.GetData<Country>(countriesRequest);
+                //var countriesService = new CountryService();
+                //countriesService.SaveCities(countries);
+                //foreach (var c in cities)
+                //{
+                //    c.CountryID = c.Country.CountryID;
+                //}
+                //var citiesService = new CityService();
+                //citiesService.SaveCities(cities);
+
+                var airlinesRequest = new AirlineRequest("", "LLBG");
+                var airlines = dateReceiver.GetData<Airline>(airlinesRequest);
+                var airlinesService = new AirlineServise();
+                airlinesService.SaveAirline(airlines);
+
+            }
+            catch (Exception ex)
+            {
+                
+            }
         }
     }
 }
