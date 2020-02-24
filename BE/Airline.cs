@@ -1,7 +1,10 @@
-﻿namespace BE
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BE
 {
     public class Airline
     {
+        [Key]
         public string AirLineCompanyID { get; set; }
         public string AirLineEngName { get; set; }
         public string AirLineHebName { get; set; }

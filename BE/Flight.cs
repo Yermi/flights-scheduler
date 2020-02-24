@@ -11,7 +11,7 @@ namespace BE
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string IataAirline { get; set; }
-        public int FlightNumber { get; set; }
+        public int? FlightNumber { get; set; }
         public string FlightID { get; set; }
         public string Source { get; set; }
         public string Destination { get; set; }

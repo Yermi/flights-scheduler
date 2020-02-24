@@ -79,7 +79,7 @@
                     let dayOfWeek = row.cells[4].innerText;
                     let terminal = row.cells[5].innerText;
                     let obj = { 
-                                IataAirline: iata, FlightNumber: number, FlightID: iata + number, 
+                                IataAirline: iata, FlightNumber: Number.isInteger(number) ? number : null, FlightID: iata + number, 
                                 Source: 'TEL AVIV', Destination: destination, 
                                 DepartureTime: fullDate, DayOfWeek: dayOfWeek, Terminal: terminal
                               };
