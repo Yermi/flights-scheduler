@@ -136,5 +136,11 @@ namespace Tester
                 
             }
         }
+
+        public void CheckForNewFlights()
+        {
+            var flightService = new FlightsService();
+            var existingFlightIds = flightService.GetFlightIds();
+        }
     }
 }

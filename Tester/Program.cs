@@ -17,7 +17,8 @@ namespace Tester
             //tester.testQueryData();
             //tester.testRemoveAll();
             //tester.saveCities();
-            tester.collectData();
+            //tester.collectData();
+            tester.CheckForNewFlights();
         }
     }
 }

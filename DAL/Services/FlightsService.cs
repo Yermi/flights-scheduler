@@ -60,5 +60,11 @@ namespace DAL
                     .FirstOrDefault();
             }
         }
+
+        public List<string> GetFlightIds()
+        {
+            var db = new FlightsContext();
+            return db.Flights.Select(x => x.FlightID).Distinct().ToList();
+        }
     }
 }
