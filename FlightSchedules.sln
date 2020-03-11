@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataReceiver", "Wrapper\Dat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{06F35F3E-88BF-4F93-A4EE-71020409A1A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{31D4BC87-1FDE-40F2-92AD-CEC17F9A6A8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,14 @@ Global
 		{06F35F3E-88BF-4F93-A4EE-71020409A1A5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{06F35F3E-88BF-4F93-A4EE-71020409A1A5}.Release|x64.ActiveCfg = Release|Any CPU
 		{06F35F3E-88BF-4F93-A4EE-71020409A1A5}.Release|x64.Build.0 = Release|Any CPU
+		{31D4BC87-1FDE-40F2-92AD-CEC17F9A6A8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31D4BC87-1FDE-40F2-92AD-CEC17F9A6A8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31D4BC87-1FDE-40F2-92AD-CEC17F9A6A8F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{31D4BC87-1FDE-40F2-92AD-CEC17F9A6A8F}.Debug|x64.Build.0 = Debug|Any CPU
+		{31D4BC87-1FDE-40F2-92AD-CEC17F9A6A8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31D4BC87-1FDE-40F2-92AD-CEC17F9A6A8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31D4BC87-1FDE-40F2-92AD-CEC17F9A6A8F}.Release|x64.ActiveCfg = Release|Any CPU
+		{31D4BC87-1FDE-40F2-92AD-CEC17F9A6A8F}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
