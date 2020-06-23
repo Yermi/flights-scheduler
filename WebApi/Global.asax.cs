@@ -9,12 +9,12 @@ using WebApi.Configuration;
 
 namespace WebApi
 {
-    public class Global : HttpApplication
+    public class Global : System.Web.HttpApplication
     {
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            GlobalConfiguration.Configure(WebApiConfig.Register);
+            GlobalConfiguration.Configure(WebApiConfiguration.Register);
         }
 
         protected void Session_Start(object sender, EventArgs e)

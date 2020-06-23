@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,9 +10,17 @@ namespace WebApi.Controllers
 {
     public class FlightsController : ApiController
     {
-        public object Get()
+        //private readonly IFlightsService _flightsService;
+
+        public FlightsController()
         {
-           return new { Fruit = "Strawberry", Topping = "Chocolate" };
+           // _flightsService = new FlightsService();
+        }
+
+        public IEnumerable<object> Get()
+        {
+            return new List<object>() { new { msg = "Hello World" } , new { msg = "Hello Yirmi" } };
+            //return _flightsService.GetAll();
         }
     }
 }
