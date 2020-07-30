@@ -10,6 +10,7 @@ namespace DAL
     {
         void SaveFlights(IEnumerable<Flight> p_flights);
         IEnumerable<Flight> GetAll();
+        IEnumerable<Flight> GetByDate(DateTime date);
         void RemoveAll();
         DateTime GetMaxDate();
     }

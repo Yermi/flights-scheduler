@@ -11,10 +11,10 @@ namespace UI.ViewModels
 {
     public class MainPageViewModel
     {
-        private readonly FlightsService _flightService;
-        public MainPageViewModel()
+        private readonly IFlightsService _flightService;
+        public MainPageViewModel(IFlightsService p_flightsService)
         {
-            _flightService = new FlightsService();
+            _flightService = p_flightsService;
             Flights = new ObservableCollection<Flight>(_flightService.GetByDate(DateTime.Now));
         }
 
