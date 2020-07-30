@@ -1,9 +1,8 @@
 ﻿using BE;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL
 {
@@ -32,6 +31,14 @@ namespace DAL
             {
                 return (from f in db.Flights
                         select f).ToList();
+            }
+        }
+
+        public IEnumerable<Flight> GetByDate(DateTime date)
+        {
+            using (var db = new FlightsContext())
+            {
+                return db.Flights.Where(x => DbFunctions.TruncateTime(x.DepartureTime) == date.Date).ToList();
             }
         }
 

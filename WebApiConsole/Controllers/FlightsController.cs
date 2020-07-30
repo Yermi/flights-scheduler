@@ -16,15 +16,13 @@ namespace WebApiConsole
         public FlightsController()
         {
             _flightsService = new FlightsService();
-            //var t = _flightsService.GetAll();
         }
 
         [Route("api/flights")]
-        [HttpGet]
-        public object Get()
+        public object Get(DateTime date)
         {
-            //return new { a = 2 };
-            return _flightsService.GetAll();
+            //Validate();
+            return _flightsService.GetByDate(date);
         }
     }
 }
