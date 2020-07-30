@@ -5,6 +5,10 @@ namespace DAL
 {
     public class FlightsContext : DbContext
     {
+        public FlightsContext()
+        {
+            Database.SetInitializer<FlightsContext>(null);
+        }
         public DbSet<Flight> Flights { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<Country> Countries { get; set; }

@@ -11,7 +11,7 @@ namespace WebApiConsole
     {
         static void Main(string[] args)
         {
-            string domainAddress = "Http://localhost/";
+            string domainAddress = "Http://localhost";
 
             using (WebApp.Start(url: domainAddress))
             {

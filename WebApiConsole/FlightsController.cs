@@ -11,15 +11,19 @@ namespace WebApiConsole
 {
     public class FlightsController : ApiController
     {
-        private readonly IFlightsService _flightsService;
+        private readonly FlightsService _flightsService;
 
         public FlightsController()
         {
             _flightsService = new FlightsService();
+            //var t = _flightsService.GetAll();
         }
 
-        public IEnumerable<Flight> Get()
+        [Route("api/flights")]
+        [HttpGet]
+        public object Get()
         {
+            //return new { a = 2 };
             return _flightsService.GetAll();
         }
     }
