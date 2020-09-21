@@ -90,8 +90,8 @@ namespace Tester
             {
                 var flightsWrapper = new FlightWrapper(AirportPages.BenGurion);
                 var flightsHandler = new FlightsService();
-                var date = DateTime.Parse("30/09/2020 00:00:00");
-                while (date < DateTime.Parse("01/11/2020 00:00:00"))
+                var date = DateTime.Parse("24/03/2021 00:00:00");
+                while (date < DateTime.Parse("29/03/2021 00:00:00"))
                 {
                     var flights = flightsWrapper.GetFlightsByDate(date);
                     Console.WriteLine($"{date}: {flights.Count} flights");
@@ -112,18 +112,18 @@ namespace Tester
             try
             {
                 var dateReceiver = new DataReceiver(new Cookie());
-                var citiesRequest = new CityRequest("", "", "LLBG");
-                var cities = dateReceiver.GetData<City>(citiesRequest);
-                var countriesRequest = new CountryRequest("", "LLBG");
-                var countries = dateReceiver.GetData<Country>(countriesRequest);
-                var countriesService = new CountryService();
-                countriesService.SaveCities(countries);
-                foreach (var c in cities)
-                {
-                    c.CountryID = c.Country.CountryID;
-                }
-                var citiesService = new CityService();
-                citiesService.SaveCities(cities);
+                //var citiesRequest = new CityRequest("", "", "LLBG");
+                //var cities = dateReceiver.GetData<City>(citiesRequest);
+                //var countriesRequest = new CountryRequest("", "LLBG");
+                //var countries = dateReceiver.GetData<Country>(countriesRequest);
+                //var countriesService = new CountryService();
+                //countriesService.SaveCities(countries);
+                //foreach (var c in cities)
+                //{
+                //    c.CountryID = c.Country.CountryID;
+                //}
+                //var citiesService = new CityService();
+                //citiesService.SaveCities(cities);
 
                 var airlinesRequest = new AirlineRequest("", "LLBG");
                 var airlines = dateReceiver.GetData<Airline>(airlinesRequest);

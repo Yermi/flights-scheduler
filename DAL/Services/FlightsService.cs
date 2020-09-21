@@ -39,7 +39,7 @@ namespace DAL
         {
             using (var db = new FlightsContext())
             {
-                return db.Flights.Where(x => DbFunctions.TruncateTime(x.DepartureTime) == date.Date).ToList();
+                return db.Flights.Where(x => x.DepartureTime == date.Date).ToList();
             }
         }
 

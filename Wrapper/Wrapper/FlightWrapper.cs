@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using System.Linq;
 
 namespace Wrapper
 {
@@ -107,7 +108,31 @@ namespace Wrapper
             var asJson = JsonConvert.SerializeObject(jsResult);
             var dateTimeConverter = new IsoDateTimeConverter { DateTimeFormat = "dd/MM/yyyy HH:mm:ss" };
             var asFlights = JsonConvert.DeserializeObject <List<Flight>>(asJson, dateTimeConverter);
+            AttachCodeShareData(asFlights);
             return asFlights;
+        }
+
+        private void AttachCodeShareData(List<Flight> p_flights)
+        {
+            var groupedByDestAndTime = p_flights
+                .GroupBy(x => new { x.DepartureTime, x.Destination })
+                .ToDictionary(x => x.Key, x => x.ToList());
+
+            foreach (var time in groupedByDestAndTime)
+            {
+                var minId = time.Value.Min(x => x.FlightNumber);
+                foreach (var flight in time.Value)
+                {
+                    if (flight.FlightNumber == minId)
+                    {
+                        flight.IsOperator = true;
+                    }
+                    else
+                    {
+                        flight.IsOperator = false;
+                    }
+                }
+            }
         }
     }
 

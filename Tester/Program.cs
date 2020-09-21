@@ -16,10 +16,10 @@ namespace Tester
             //tester.testEntityFramwork();
             //tester.testQueryData();
             //tester.testRemoveAll();
-            //tester.saveCities();
+            tester.saveCities();
             //tester.collectData();
             //tester.CheckForNewFlights();
-            tester.testGetFlightsByDate();
+            //tester.testGetFlightsByDate();
         }
     }
 }
