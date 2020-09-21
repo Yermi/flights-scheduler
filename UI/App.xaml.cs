@@ -26,7 +26,7 @@ namespace UI
             var container = builder.Build();
             using (var scope = container.BeginLifetimeScope())
             {
-                var window = scope.Resolve<MainWindow>();
+                var window = new MainWindow();
                 window.DataContext = scope.Resolve<MainPageViewModel>();
                 window.Show();
             }

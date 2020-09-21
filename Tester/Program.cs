@@ -14,11 +14,12 @@ namespace Tester
             //tester.testFlightsWrapper();
             //tester.testGetData();
             //tester.testEntityFramwork();
-            tester.testQueryData();
+            //tester.testQueryData();
             //tester.testRemoveAll();
             //tester.saveCities();
             //tester.collectData();
             //tester.CheckForNewFlights();
+            tester.testGetFlightsByDate();
         }
     }
 }

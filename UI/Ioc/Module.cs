@@ -14,7 +14,8 @@ namespace UI.Ioc
         protected override void Load(ContainerBuilder builder)
         {
             base.Load(builder);
-
+            
+            // page
             builder.RegisterType<MainWindow>().AsSelf();
 
             // view Models

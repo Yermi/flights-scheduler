@@ -142,5 +142,12 @@ namespace Tester
             var flightService = new FlightsService();
             var existingFlightIds = flightService.GetFlightIds();
         }
+
+        public void testGetFlightsByDate()
+        {
+            var date = DateTime.Now;
+            var flightService = new FlightsService();
+            var f = flightService.GetByDate(date);
+        }
     }
 }
